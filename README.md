@@ -27,4 +27,10 @@ inputANDoutput
 
 ## Chapter 4
 ### Exercise 1
+mux1bit
+* simulation as founding for mux8bit
+mux8bit
+* used code from mux1bit and modified
+* simulation does not take all vector combinations into account but is ok as each vector element (for the two input vectors) is treated the same
+### Exercise2
 
