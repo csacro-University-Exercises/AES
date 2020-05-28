@@ -1,8 +1,8 @@
 # AES Exercise SoSe2020
 These are my chapertwise and exercisewise notes and comments.
 Steps taken for each Quartus task
-* create new project
-* import pint assignment and set unused pins to tri-state input
+* create new project (DE2-115 is Cyclone IVE EP4CE115F29C7)
+* import pin assignment and set unused pins to tri-state input
 * implement and compile vhd file
 * simulation: functional and timing
 * programming FPGA and test
@@ -33,4 +33,8 @@ mux8bit
 * used code from mux1bit and modified
 * simulation does not take all vector combinations into account but is ok as each vector element (for the two input vectors) is treated the same
 ### Exercise2
+mux3bit
+* realised with construct WITH...SELECT...WHEN...  
+therefore intermediate signals were not needed
+### Exercise 3
 
