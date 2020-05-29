@@ -1,5 +1,5 @@
 # AES Exercise SoSe2020
-These are my chapertwise and exercisewise notes and comments.
+These are my chapterwise and exercisewise notes and comments.
 Steps taken for each Quartus task
 * create new project (DE2-115 is Cyclone IVE EP4CE115F29C7)
 * import pin assignment and set unused pins to tri-state input
@@ -37,4 +37,8 @@ mux3bit
 * realised with construct WITH...SELECT...WHEN...  
 therefore intermediate signals were not needed
 ### Exercise 3
-
+switchestosegmentdisplay
+* extra file "segmentdisplay.vhd" to be able to reuse later  
+looked up how to access seven segment display in DE2-115 user manual (chapter 4.4)  
+take care with segment display: 0 in vector means on, 1 means off
+### Exercise 4
