@@ -42,3 +42,12 @@ switchestosegmentdisplay
 looked up how to access seven segment display in DE2-115 user manual (chapter 4.4)  
 take care with segment display: 0 in vector means on, 1 means off
 ### Exercise 4
+carryrippleadder
+* extra file "fulladder.vhd" to be able to use fulladder components for carryrippleadder  
+formulas for fulladder: s = a XOR b XOR ci, co = (ci AND (a XOR b)) OR (a AND b)
+* helper signal c in "carryrippleadder.vhd" to safe carries while adding
+* simulation not for all combinations but when one fulladder works all fulladders are working correctly
+
+## Chapter 5
+### Exercise 1
+
