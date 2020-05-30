@@ -63,3 +63,4 @@ alt/
 !*.vwf
 !*.cdf
 *.qws
+!*.pdf

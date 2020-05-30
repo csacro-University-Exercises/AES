@@ -1,7 +1,7 @@
 # AES Exercise SoSe2020
 These are my chapterwise and exercisewise notes and comments.
 Steps taken for each Quartus task
-* create new project (DE2-115 is Cyclone IVE EP4CE115F29C7)
+* create new project (DE2-115 is Cyclone IV E EP4CE115F29C7)
 * import pin assignment and set unused pins to tri-state input
 * implement and compile vhd file
 * simulation: functional and timing
@@ -49,5 +49,20 @@ formulas for fulladder: s = a XOR b XOR ci, co = (ci AND (a XOR b)) OR (a AND b)
 * simulation not for all combinations but when one fulladder works all fulladders are working correctly
 
 ## Chapter 5
+### Exercise 1
+part1
+* followed tutorial step by step  
+Viewers are found under Tools > Netlist Viewers
+part2_1
+* followed tutorial step by step
+part2_2
+* followed tutorial step by step  
+copied "part2.vhd" from part2_1 into "d_latch.vhd" (take care: dlatch entity does already exist)  
+simulation of dlatch already done in part2_1
+part3
+* followed tutorial step by step  
+copied "d_latch.vhd" from part2_2
+
+## Chapter 6
 ### Exercise 1
 
