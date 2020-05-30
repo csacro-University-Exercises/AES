@@ -32,7 +32,7 @@ mux1bit
 mux8bit
 * used code from mux1bit and modified
 * simulation does not take all vector combinations into account but is ok as each vector element (for the two input vectors) is treated the same
-### Exercise2
+### Exercise 2
 mux3bit
 * realised with construct WITH...SELECT...WHEN...  
 therefore intermediate signals were not needed
@@ -66,14 +66,20 @@ copied "d_latch.vhd" from part2_2
 ## Chapter 6
 ### Exercise 1
 counter
-* "htb.vhd" equals "segmentdisplay.vhd" from chapter4 exercise3 (take care: outöput vector is the wrong way round here)
+* "htb.vhd" equals "segmentdisplay.vhd" from chapter4 exercise3 (take care: output vector is the wrong way round here)
 * 50MHz -> 50 000 000 times per second  
 logs2(50 000 000) = 25.5754... -> 25 Stellen reichen aus um 50 000 000 binär darzustellen  
 50 000 000 decimal is 10111110101111000010000000 binary  
 as it says approximately one second we can just let the counter overflow
 * on rising clock edge add one to counter  
-* if counter overlows manipulate number
+before counter overlows manipulate number
 * no simulation for this exercise, tried directly on board
 ### Exercise 2
 counter
-* copied "*.vhd" files from exercise1
+* copied "*.vhd" files from exercise1  
+added two more numbers and two more seven segment displays and therefore two more htb components  
+adapted implementation of number manipulation
+* no simulation for this exercise, tried directly on board
+
+## Chapter 7
+### Exercise 1
