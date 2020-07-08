@@ -53,12 +53,15 @@ formulas for fulladder: s = a XOR b XOR ci, co = (ci AND (a XOR b)) OR (a AND b)
 part1
 * followed tutorial step by step  
 Viewers are found under Tools > Netlist Viewers
+
 part2_1
 * followed tutorial step by step
+
 part2_2
 * followed tutorial step by step  
 copied "part2.vhd" from part2_1 into "d_latch.vhd" (take care: dlatch entity does already exist)  
 simulation of dlatch already done in part2_1
+
 part3
 * followed tutorial step by step  
 copied "d_latch.vhd" from part2_2
@@ -68,7 +71,7 @@ copied "d_latch.vhd" from part2_2
 counter
 * "htb.vhd" equals "segmentdisplay.vhd" from chapter4 exercise3 (take care: output vector is the wrong way round here)
 * 50MHz -> 50 000 000 times per second  
-logs2(50 000 000) = 25.5754... -> 25 Stellen reichen aus um 50 000 000 binär darzustellen  
+logs2(50 000 000) = 25.5754... -> 25 positions are enough to represent 50 000 000 binary 
 50 000 000 decimal is 10111110101111000010000000 binary  
 as it says approximately one second we can just let the counter overflow
 * on rising clock edge add one to counter  
@@ -83,3 +86,24 @@ adapted implementation of number manipulation
 
 ## Chapter 7
 ### Exercise 1
+applied crc approach whith shift register to given example by hand to get familiar with algorithm  
+crc
+* counter tracks number of shifts and has to count from 0 to (32-7) -> 5 positions are enough to represent 25 binary  -> "11001"
+* no simulation for this exercise, tried directly on board in chapter 8
+
+## Chapter 8
+crc_wrapper
+* copied "crc.vhd" file from chapter 7
+* output  
+positive check -> no LED is on  
+check sum -> bits to be append to message (LEDR7 downto LEDR0)
+* input  
+generator polynom -> SW from 7 downto 0  
+message
+	* split into four parts
+	* input from SW7 downto SW0
+	* select part with SW11 and SW10 (11 | 10 | 01 | 00)
+* no simulation for this exercise, tried directly on board  
+used LEDG as debug pins to know in which case "crc.vhd" is  
+hardcoded message and generator in "crc.vhd"  
+used SW as clock
