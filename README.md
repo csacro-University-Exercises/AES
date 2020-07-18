@@ -104,6 +104,12 @@ message
 	* input from SW7 downto SW0
 	* select part with SW11 and SW10 (11 | 10 | 01 | 00)
 * no simulation for this exercise, tried directly on board  
-used LEDG as debug pins to know in which case "crc.vhd" is  
-hardcoded message and generator in "crc.vhd"  
-used SW as clock
+crc_wrapper_debug
+* used LEDG as debug pins to know in which case "crc.vhd" is  
+* hard-coded message and generator in "crc.vhd"  
+* used SW as clock
+
+-> problem was that value are not set/updated directly but after process finished (-> do not shift and xor in the same case)
+* removed hard-coding for message and generator in "crc.vhd"
+
+-> same problem for input between "crc.vhd" and "crc_wrapper.vhd" (-> trigger on falling edge in "crc_wrapper.vhd")

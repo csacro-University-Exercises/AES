@@ -5,7 +5,9 @@ USE ieee.std_logic_unsigned.all;
 ENTITY crc_wrapper IS
 	PORT (CLOCK_50: IN STD_LOGIC;
 			LEDR: OUT STD_LOGIC_VECTOR(6 downto 0);
-			SW: IN STD_LOGIC_VECTOR(17 downto 0));
+			SW: IN STD_LOGIC_VECTOR(17 downto 0);
+			LEDG: OUT STD_LOGIC_VECTOR(7 downto 0);
+			KEY: IN STD_LOGIC_VECTOR(3 downto 0));
 END crc_wrapper;
 
 ARCHITECTURE behavior OF crc_wrapper IS
@@ -13,7 +15,8 @@ COMPONENT crc
 	PORT (input: IN STD_LOGIC_VECTOR(31 downto 0);
 			output: OUT STD_LOGIC_VECTOR(6 downto 0);
 			adr, wrt, reset: IN STD_LOGIC;
-			clock: IN STD_LOGIC);
+			clock: IN STD_LOGIC;
+			debug: OUT STD_LOGIC_VECTOR(7 downto 0));
 END COMPONENT;
 
 SIGNAL message: STD_LOGIC_VECTOR(31 downto 0);
@@ -22,14 +25,14 @@ SIGNAL input: STD_LOGIC_VECTOR(7 downto 0);
 SIGNAL clk, reset, wrt, adr: STD_LOGIC;
 
 BEGIN
-	clk <= CLOCK_50;
+	clk <= KEY(0);
 	input <= SW(7 downto 0);
 	part <= SW(11 downto 10);
 	reset <= SW(17);
 	wrt <= SW(16);
 	adr <= SW(15);
 	
-	crc_checker: crc PORT MAP (message, LEDR, adr, wrt, reset, clk);
+	crc_checker: crc PORT MAP (message, LEDR, adr, wrt, reset, clk, LEDG);
 	
 	PROCESS (clk)
 	BEGIN

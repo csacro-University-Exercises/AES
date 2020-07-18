@@ -45,13 +45,11 @@ BEGIN
 				-- shifted 25 times -> finish calc
 					generator <= "00000000";
 					counter <= "00000";
+				ELSIF (do_xor = '1') THEN
+					-- xor
+					message(31 downto 24) <= message(31 downto 24) xor generator(7 downto 0);
 				ELSE
-				-- continue calc
 					counter <= counter + 1;
-					IF (do_xor = '1') THEN
-					-- xor before shift
-						message(30 downto 24) <= message(30 downto 24) XOR generator(6 downto 0);
-					END IF;
 					-- shift
 					message(31 downto 1) <= message(30 downto 0);
 					message(0) <= '0';
