@@ -132,6 +132,7 @@ crc_wrapper_debug
 -> same problem for input between "crc.vhd" and "crc_wrapper.vhd" (-> trigger on falling edge in "crc_wrapper.vhd")
 
 ## Chapter 9
+### Exercise 1
 lights
 * followed tutorial step by step  
 decided to use vhdl and C  
@@ -147,8 +148,16 @@ there was only a .text section in Memory Settings (no .data section)
 helloworld
 * copied files from above exercise and renamed to helloworld
 * modified nios_system.qsys and helloworld.c accoring to exercise description
-* modified lights.vhd
+* modified helloworld.vhd
 	* removed switches_export and leds_export from nios_system component and port map of NiosII
 	* removed SW and LEDG from ports of helloworld entitiy
 * on execution it is printed "Hello World!" in the terminal
+
+## Chapter 11
+### Exercise 1
+crc
+* copied files from Chapter10 Exercise2 and renamed to crc
+* modified crc.c to calculate crc
+	* see Chapter7 and "crc.vhd" for thoughts
+	* input and output using terminal
 
