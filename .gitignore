@@ -40,7 +40,7 @@ alt/
 
 # software binary files
 
-/*/*/*/*
+*/*/*/*
 !/*.gitignore
 ##
 !*.qpf

@@ -1,5 +1,5 @@
 # AES Exercise SoSe2020
-These are my chapterwise and exercisewise notes and comments.
+These are my chapterwise and exercisewise notes and comments.  
 Steps taken for each Quartus task
 * create new project (DE2-115 is Cyclone IV E EP4CE115F29C7)
 * import pin assignment and set unused pins to tri-state input
@@ -13,7 +13,7 @@ Steps taken for each NIOS II task
 	* import pin assignment and set unused pins to tri-state input
 * Qsys Tool
 	* specify and connect components
-	* generate
+	* generate HDL
 * Quartus
 	* implement vhd file
 	* add nios_system/synthesis/*.qip file to project
@@ -136,4 +136,19 @@ lights
 * followed tutorial step by step  
 decided to use vhdl and C  
 had to install altera monitor program  
+
+## Chapter 10
+### Exercise 1
+lights
+* copied files from chapter 9
+* followed tutorial step by step  
+there was only a .text section in Memory Settings (no .data section)
+### Exercise 2
+helloworld
+* copied files from above exercise and renamed to helloworld
+* modified nios_system.qsys and helloworld.c accoring to exercise description
+* modified lights.vhd
+	* removed switches_export and leds_export from nios_system component and port map of NiosII
+	* removed SW and LEDG from ports of helloworld entitiy
+* on execution it is printed "Hello World!" in the terminal
 
