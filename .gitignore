@@ -64,3 +64,6 @@ alt/
 !*.cdf
 *.qws
 !*.pdf
+!*.qsys
+!*/*/*/app_software
+*/*/*/app_software/*.elf

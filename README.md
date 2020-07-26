@@ -7,6 +7,22 @@ Steps taken for each Quartus task
 * simulation: functional and timing
 * programming FPGA and test
 
+Steps taken for each NIOS II task
+* Quartus
+	* create new project (DE2-115 is Cyclone IV E EP4CE115F29C7)
+	* import pin assignment and set unused pins to tri-state input
+* Qsys Tool
+	* specify and connect components
+	* generate
+* Quartus
+	* implement vhd file
+	* add nios_system/synthesis/*.qip file to project
+	* compile project
+* Altera Monitor Program
+	* create *.c file
+	* create new project
+	* Compile & Load and click run
+
 ## Chapter 1
 just read through
 
@@ -104,12 +120,20 @@ message
 	* input from SW7 downto SW0
 	* select part with SW11 and SW10 (11 | 10 | 01 | 00)
 * no simulation for this exercise, tried directly on board  
+
 crc_wrapper_debug
 * used LEDG as debug pins to know in which case "crc.vhd" is  
 * hard-coded message and generator in "crc.vhd"  
 * used SW as clock
 
--> problem was that value are not set/updated directly but after process finished (-> do not shift and xor in the same case)
+-> problem was that values are not set/updated directly but after process finished (-> do not shift and xor in the same case)
 * removed hard-coding for message and generator in "crc.vhd"
 
 -> same problem for input between "crc.vhd" and "crc_wrapper.vhd" (-> trigger on falling edge in "crc_wrapper.vhd")
+
+## Chapter 9
+lights
+* followed tutorial step by step  
+decided to use vhdl and C  
+had to install altera monitor program  
+
