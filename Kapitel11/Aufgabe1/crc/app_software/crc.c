@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 void print_bin(unsigned int num) {
     if (num > 1) {
@@ -11,42 +10,63 @@ void print_bin(unsigned int num) {
 int main() {
     unsigned int message;
     unsigned int generator;
-    char buf[32];
-    char *dummy;
+    char c;
+	int counter;
+	unsigned short enable;
 
 	while (1) {
+		enable = 1;
 		// read in message and polynom
-		do {
+		counter = 0;
 		printf("Enter a 32-bit long message: ");
-		} while (scanf("%32s", buf) != 1);
-		message = strtol(buf, &dummy, 2);
+		while (counter < 32) {
+			c = getchar();
+			if (c == '1' || c == '0') {
+				message <<= 1;
+				message += (c - '0');
+				counter ++;
+			}
+		}
+		print_bin(message);
 
 		// read in polynom with check for enable
-		do {
-		printf("Enter a 8-bit long generator polynom (first and last bit have to be '1'): ");
-		} while (scanf("%8s", buf) != 1 || buf[0] != '1' || buf[7] != '1');
-		generator = strtol(buf, &dummy, 2);
-		generator <<= 24;
+		counter = 0;
+		printf("\nEnter a 8-bit long generator polynom (first and last bit have to be '1'): ");
+		while (counter < 8) {
+			if ((c = getchar()) == '1' || c == '0') {
+				if ((counter == 0 && c != '1') || (counter == 7 && c != '1')) {
+					enable = 0;
+				}
+				generator <<= 1;
+				generator += (c - '0');
+				counter ++;
+			}
+		}
+		print_bin(generator);
 
-		// calculate crc
-		int counter = 0;
-		while (counter < 25) {
-			// shift 25 times
+		if (enable == 1) {
+			// calculate crc
+			generator <<= 24;
+			counter = 0;
+			while (counter < 25) {
+				// shift 25 times
 
-			if (message & (1 << 31)) {
-				// xor
-				message ^= generator;
-			} else {
+				if (message & (1 << 31)) {
+					// xor
+					message ^= generator;
+				}
 				// shift
 				counter++;
 				message <<= 1;
 			}
+			
+			// output result
+			printf("\nCRC Result: ");
+			print_bin(message >> 25);
+			printf("\n");
+		} else {
+			printf("\ninvalid generator polynom\n");
 		}
-
-		// output result
-		printf("CRC Result: ");
-		print_bin(message >> 25);
-		printf("\n");
 	}
 
     return 0;

@@ -15,7 +15,7 @@
             <source_file filepath="true">crc.c</source_file>
         </source_files>
         <options>
-            <compiler_flags>-mno-hw-mul -g -O1 -ffunction-sections -fverbose-asm -fno-inline -mno-cache-volatile</compiler_flags>
+            <compiler_flags>-g -O1 -ffunction-sections -fverbose-asm -fno-inline -mno-cache-volatile -mno-hw-mul</compiler_flags>
             <emulate_unimpl_instructions>true</emulate_unimpl_instructions>
             <use_small_c_library>false</use_small_c_library>
         </options>

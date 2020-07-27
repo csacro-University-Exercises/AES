@@ -160,4 +160,7 @@ crc
 * modified crc.c to calculate crc
 	* see Chapter7 and "crc.vhd" for thoughts
 	* input and output using terminal
+* issues with scanf  
+-> problem was `while scanf("%32s", ...) != 1` (-> instead use `scanf("%s", ...)` which is not so safe...)   
+-> use getchar instead of scanf to have save C code and additionally check for binary input
 
