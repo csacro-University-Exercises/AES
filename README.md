@@ -164,3 +164,17 @@ crc
 -> problem was `while scanf("%32s", ...) != 1` (-> instead use `scanf("%s", ...)` which is not so safe...)   
 -> use getchar instead of scanf to have save C code and additionally check for binary input
 
+## Chapter 12
+### Exercise 1
+component_tutorial
+* followed tutorial step by step  
+### Exercise 2
+TODO
+### Exercise 3
+TODO
+
+## Chapter 13
+### Exercise 1
+TODO
+### Exercise 2
+TODO

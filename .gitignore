@@ -63,7 +63,7 @@ alt/
 !*.vwf
 !*.cdf
 *.qws
-!*.pdf
+*.pdf
 !*.qsys
 !*/*/*/app_software
 */*/*/app_software/*.elf
