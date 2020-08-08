@@ -169,7 +169,9 @@ crc
 component_tutorial
 * followed tutorial step by step  
 ### Exercise 2
-TODO
+crc_codesign
+* copied "crc.vhd" from Chapter7 Exercise1
+used files and tutorial from above exercise as template
 ### Exercise 3
 TODO
 
