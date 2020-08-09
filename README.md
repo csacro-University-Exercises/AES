@@ -95,7 +95,7 @@ before counter overlows manipulate number
 * no simulation for this exercise, tried directly on board
 ### Exercise 2
 counter
-* copied "*.vhd" files from exercise1  
+* copied "*.vhd" files from above exercise 
 added two more numbers and two more seven segment displays and therefore two more htb components  
 adapted implementation of number manipulation
 * no simulation for this exercise, tried directly on board
@@ -108,11 +108,12 @@ crc
 * no simulation for this exercise, tried directly on board in chapter 8
 
 ## Chapter 8
+### Exercise1
 crc_wrapper
-* copied "crc.vhd" file from chapter 7
+* copied "crc.vhd" file from Chapter7 Exercise1
 * output  
 positive check -> no LED is on  
-check sum -> bits to be append to message (LEDR7 downto LEDR0)
+check sum -> bits to be append to message (LEDR6 downto LEDR0)
 * input  
 generator polynom -> SW from 7 downto 0  
 message
@@ -141,7 +142,7 @@ had to install altera monitor program
 ## Chapter 10
 ### Exercise 1
 lights
-* copied files from chapter 9
+* copied files from Chapter9 Exercise1
 * followed tutorial step by step  
 there was only a .text section in Memory Settings (no .data section)
 ### Exercise 2
@@ -173,7 +174,28 @@ crc_codesign
 * copied "crc.vhd" from Chapter7 Exercise1
 used files and tutorial from above exercise as template
 ### Exercise 3
-TODO
+crc_codesign
+* copied files from above exercise
+* copied "crc.c" file from Chapter11 Exercise1 and modified content
+	* message and generator polynom have to be written to Avalon Interface -> IOWR(base, offset, data) -> #include <io.h> needed
+	* result of CRC is displayed on board the same way as in Chapter8 Exercise1
+* issue loading code on board
+	* Using cable "USB-Blaster [USB-0]", device 1, instance 0x00  
+Resetting and pausing target processor: OK  
+Initializing CPU cache (if present)  
+OK  
+Downloading 00001000 ( 0%)  
+Downloaded 54KB in 0.0s  
+Verifying 00001000 ( 0%)  
+Verify failed between address 0x1000 and 0xE657  
+Leaving target processor paused  
+Possible causes for the SREC verification failure:  
+1. Not enough memory in your Nios II system to contain the SREC file.  
+2. The locations in your SREC file do not correspond to a memory device.  
+3. You may need a properly configured PLL to access the SDRAM or Flash memory.
+* 3. cannot be as I am using onchip-memory
+* 2. cannot be as error occurs after commenting out IOWR calls in "crc.c"
+* 1. after increasing the onchip-memory vhdl files are not compiling any more (why ?)
 
 ## Chapter 13
 ### Exercise 1
