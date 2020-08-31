@@ -29,7 +29,7 @@ int main() {
 			}
 		}
 		print_bin(message);
-		IOWR(0x1000, 0, message);
+		//IOWR(0, 0, message);
 
 		// read in polynom with check for enable
 		counter = 0;
@@ -45,7 +45,7 @@ int main() {
 			}
 		}
 		print_bin(generator);
-		IOWR(0x1000, 2, generator);
+		//IOWR(0, 1, generator);
 	}
 
     return 0;

@@ -7,6 +7,7 @@
         <cable>USB-Blaster [USB-0]</cable>
         <processor>nios2_qsys_0</processor>
         <reset_processor_during_load>false</reset_processor_during_load>
+        <terminal>jtag_uart_0</terminal>
     </system>
     <program>
         <type>C Program</type>
@@ -19,10 +20,24 @@
             <use_small_c_library>false</use_small_c_library>
         </options>
         <linker_sections>
+            <linker_section name=".reset">
+                <memory_device>sdram.s1</memory_device>
+                <base_address>0x08000000</base_address>
+                <end_address>0x0800001F</end_address>
+                <required_section/>
+                <fixed_base_address/>
+            </linker_section>
+            <linker_section name=".exceptions">
+                <memory_device>sdram.s1</memory_device>
+                <base_address>0x08000020</base_address>
+                <end_address>0x080001FF</end_address>
+                <required_section/>
+                <fixed_base_address/>
+            </linker_section>
             <linker_section name=".text">
-                <memory_device>onchip_memory2_0.s1</memory_device>
-                <base_address>0x00001000</base_address>
-                <end_address>0x00001FFF</end_address>
+                <memory_device>sdram.s1</memory_device>
+                <base_address>0x08000200</base_address>
+                <end_address>0x0FFFFFFF</end_address>
                 <required_section/>
             </linker_section>
         </linker_sections>

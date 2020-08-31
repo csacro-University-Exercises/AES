@@ -190,12 +190,19 @@ Verifying 00001000 ( 0%)
 Verify failed between address 0x1000 and 0xE657  
 Leaving target processor paused  
 Possible causes for the SREC verification failure:  
-1. Not enough memory in your Nios II system to contain the SREC file.  
-2. The locations in your SREC file do not correspond to a memory device.  
-3. You may need a properly configured PLL to access the SDRAM or Flash memory.
-* 3. cannot be as I am using onchip-memory
-* 2. cannot be as error occurs after commenting out IOWR calls in "crc.c"
-* 1. after increasing the onchip-memory vhdl files are not compiling any more (why ?)
+1st Not enough memory in your Nios II system to contain the SREC file.  
+2nd The locations in your SREC file do not correspond to a memory device.  
+3rd You may need a properly configured PLL to access the SDRAM or Flash memory.
+		* 3rd cannot be as I am using onchip-memory
+		* 2nd cannot be as error occurs after commenting out IOWR calls in "crc.c"
+		* 1st inceasing on chip memory (larger than srec file) did not solve the issue  
+-> changed "crc.vhd" to only change output when calculation is finished (there were compile warnings in Quartus because of former implementation),
+but had nothing to do with the error above  
+	* changed to sdram and added jtag_urat component in qsys tool but now receiving followin error when loading to board:  
+	Could not query JTAG Instance IDs.  
+	Please ensure the FPGA has been configured using the correct .sof file.  
+        * correct .sof file ensured
+        * getting this error also for project from Dominik Authaler and for him his project does not raise any errors
 
 ## Chapter 13
 ### Exercise 1
