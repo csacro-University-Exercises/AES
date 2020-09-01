@@ -198,12 +198,16 @@ Possible causes for the SREC verification failure:
 		* 1st inceasing on chip memory (larger than srec file) did not solve the issue  
 -> changed "crc.vhd" to only change output when calculation is finished (there were compile warnings in Quartus because of former implementation),
 but had nothing to do with the error above  
-	* changed to sdram and added jtag_urat component in qsys tool  
+	* changed to sdram and added jtag_urat component in qsys tool 
 * crc_codesign now working with output of result on LEDR of board  
-but result should be displayed on terminal when calculation is finished  
+but result should be displayed on terminal when calculation is finished 
 -> first implementation with polling, then adding interrupt signaling that calculation is finished
-	* crc.vhd has to be modified to output generator polynom and not only message
-	* avalon interface has to be modified for read access and then for interrupt handling
+	* crc.vhd has to be modified to output generator and not only message -> polling possible
+		* not working as IORD(CRC_BASE_ADDR, 1) also reads the message instead of the generator, but why ?
+			* updated "crc_avalon_interface.vhd" to change address bit on read, too
+			* adopted length of output of crc to 32 bit
+			* BUT: faulty behaviour is still occuring
+	* interrupt signal has to be defined in qsys
 
 ## Chapter 13
 Compare Software-CRC (Chapter11) with Hardware-CRC (Chapter8)

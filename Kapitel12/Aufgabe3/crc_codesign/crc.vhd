@@ -4,7 +4,7 @@ USE ieee.std_logic_unsigned.all;
 
 ENTITY crc IS
 	PORT (input: IN STD_LOGIC_VECTOR(31 downto 0);
-			output: OUT STD_LOGIC_VECTOR(6 downto 0);
+			output: OUT STD_LOGIC_VECTOR(31 downto 0);
 			adr, wrt, reset: IN STD_LOGIC;
 			clk: IN STD_LOGIC);
 END crc;
@@ -19,7 +19,6 @@ ARCHITECTURE behavior OF crc IS
 BEGIN
 	clock <= clk;
 	do_xor <= message(31);
-	output <= message(31 downto 25);
 	enable <= generator(0) AND generator(7);
 	
 	PROCESS (clock)
@@ -45,6 +44,9 @@ BEGIN
 				-- shifted 25 times -> finish calc
 					generator <= "00000000";
 					counter <= "00000";
+					message(6 downto 0) <= message(31 downto 25);
+					message(31 downto 7) <= "0000000000000000000000000";
+					output <= message;
 				ELSIF (do_xor = '1') THEN
 					-- xor
 					message(31 downto 24) <= message(31 downto 24) xor generator(7 downto 0);
@@ -54,6 +56,11 @@ BEGIN
 					message(31 downto 1) <= message(30 downto 0);
 					message(0) <= '0';
 				END IF;
+			ELSIF (adr = '1') THEN
+				output(7 downto 0) <= generator;
+				output(31 downto 8) <= "000000000000000000000000";
+			ELSE
+				output <= message;
 			END IF;
 		END IF;
 	END PROCESS;

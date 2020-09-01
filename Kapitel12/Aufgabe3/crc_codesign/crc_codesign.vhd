@@ -17,7 +17,7 @@ END crc_codesign;
 ARCHITECTURE Structure OF crc_codesign IS
 	COMPONENT embedded_system IS
         PORT (
-            crc_out_readdata : out   std_logic_vector(6 downto 0);
+            crc_out_readdata : out   std_logic_vector(31 downto 0);
             sdram_wire_addr  : out   std_logic_vector(12 downto 0); 
             sdram_wire_ba    : out   std_logic_vector(1 downto 0); 
             sdram_wire_cas_n : out   std_logic; 
@@ -33,9 +33,11 @@ ARCHITECTURE Structure OF crc_codesign IS
         );
     END COMPONENT embedded_system;
 	
+	 SIGNAL to_ledr : STD_LOGIC_VECTOR(31 downto 0);
+	
 BEGIN
 	U0: embedded_system PORT MAP (
-            crc_out_readdata => LEDR,
+            crc_out_readdata => to_ledr,
             sdram_wire_addr  => DRAM_ADDR,
             sdram_wire_ba    => DRAM_BA,
             sdram_wire_cas_n => DRAM_CAS_N,
@@ -49,4 +51,5 @@ BEGIN
             reset_reset      => NOT KEY(0),
             sdram_clk_clk    => DRAM_CLK
         );
+	  LEDR <= to_ledr (6 downto 0);
 END Structure;

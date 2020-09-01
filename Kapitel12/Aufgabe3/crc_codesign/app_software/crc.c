@@ -18,10 +18,10 @@ int main() {
 	unsigned short enable;
 
 	while (1) {
-		enable = 1;
+		
 		// read in message and polynom
 		counter = 0;
-		printf("Enter a 32-bit long message: ");
+		printf("\nEnter a 32-bit long message: ");
 		while (counter < 32) {
 			c = getchar();
 			if (c == '1' || c == '0') {
@@ -48,6 +48,14 @@ int main() {
 		}
 		print_bin(generator);
 		IOWR(CRC_BASE_ADDR, 1, generator);
+		
+		// output result
+		while(IORD(CRC_BASE_ADDR, 1)) {
+			printf("\n generator \n");
+			print_bin(IORD(CRC_BASE_ADDR, 1));
+		}
+		printf("\nCRC result :");
+		print_bin(IORD(CRC_BASE_ADDR, 0));
 	}
 
     return 0;
