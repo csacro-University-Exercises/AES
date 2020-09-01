@@ -198,14 +198,17 @@ Possible causes for the SREC verification failure:
 		* 1st inceasing on chip memory (larger than srec file) did not solve the issue  
 -> changed "crc.vhd" to only change output when calculation is finished (there were compile warnings in Quartus because of former implementation),
 but had nothing to do with the error above  
-	* changed to sdram and added jtag_urat component in qsys tool but now receiving followin error when loading to board:  
-	Could not query JTAG Instance IDs.  
-	Please ensure the FPGA has been configured using the correct .sof file.  
-        * correct .sof file ensured
-        * getting this error also for project from Dominik Authaler and for him his project does not raise any errors
+	* changed to sdram and added jtag_urat component in qsys tool  
+* crc_codesign now working with output of result on LEDR of board  
+but result should be displayed on terminal when calculation is finished  
+-> first implementation with polling, then adding interrupt signaling that calculation is finished
+	* crc.vhd has to be modified to output generator polynom and not only message
+	* avalon interface has to be modified for read access and then for interrupt handling
 
 ## Chapter 13
+Compare Software-CRC (Chapter11) with Hardware-CRC (Chapter8)
 ### Exercise 1
-TODO
+modified crc.c file in Chapter11 to output computation time for Software-CRC  
+see solution of this Exercise for notes
 ### Exercise 2
-TODO
+see solution of this Exercise for notes

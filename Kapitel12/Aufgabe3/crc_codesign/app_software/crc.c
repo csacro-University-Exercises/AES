@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <io.h>
 
+#define CRC_BASE_ADDR 0x10003000
+
 void print_bin(unsigned int num) {
     if (num > 1) {
         print_bin(num/2);
@@ -29,7 +31,7 @@ int main() {
 			}
 		}
 		print_bin(message);
-		//IOWR(0, 0, message);
+		IOWR(CRC_BASE_ADDR, 0, message);
 
 		// read in polynom with check for enable
 		counter = 0;
@@ -45,7 +47,7 @@ int main() {
 			}
 		}
 		print_bin(generator);
-		//IOWR(0, 1, generator);
+		IOWR(CRC_BASE_ADDR, 1, generator);
 	}
 
     return 0;

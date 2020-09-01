@@ -46,7 +46,7 @@ BEGIN
             sdram_wire_ras_n => DRAM_RAS_N,
             sdram_wire_we_n  => DRAM_WE_N,
             clk_clk          => CLOCK_50,
-            reset_reset      => KEY(0),
+            reset_reset      => NOT KEY(0),
             sdram_clk_clk    => DRAM_CLK
         );
 END Structure;
