@@ -17,8 +17,7 @@ int main() {
 	int counter;
 	unsigned short enable;
 
-	while (1) {
-		
+	while (1) {		
 		// read in message and polynom
 		counter = 0;
 		printf("\nEnter a 32-bit long message: ");
@@ -34,6 +33,7 @@ int main() {
 		IOWR(CRC_BASE_ADDR, 0, message);
 
 		// read in polynom with check for enable
+		enable = 1;
 		counter = 0;
 		printf("\nEnter a 8-bit long generator polynom (first and last bit have to be '1'): ");
 		while (counter < 8) {
@@ -49,13 +49,15 @@ int main() {
 		print_bin(generator);
 		IOWR(CRC_BASE_ADDR, 1, generator);
 		
-		// output result
-		while(IORD(CRC_BASE_ADDR, 1)) {
-			printf("\n generator \n");
+		if (enable == 1) {
+			// output result
+			while(IORD(CRC_BASE_ADDR, 1));
+			printf("\nCRC result:");
+			print_bin(IORD(CRC_BASE_ADDR, 0));
+		} else {
+			printf("\ninvalid generator polynom\n");
 			print_bin(IORD(CRC_BASE_ADDR, 1));
 		}
-		printf("\nCRC result :");
-		print_bin(IORD(CRC_BASE_ADDR, 0));
 	}
 
     return 0;

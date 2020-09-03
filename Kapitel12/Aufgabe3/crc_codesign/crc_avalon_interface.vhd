@@ -17,7 +17,7 @@ ARCHITECTURE Structure OF crc_avalon_interface IS
 
 	COMPONENT crc
 		PORT (input: IN STD_LOGIC_VECTOR(31 downto 0);
-				output: OUT STD_LOGIC_VECTOR(7 downto 0);
+				output: OUT STD_LOGIC_VECTOR(31 downto 0);
 				adr, wrt, reset: IN STD_LOGIC;
 				clk: IN STD_LOGIC);
 	END COMPONENT;
