@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 
 void print_bin(unsigned int num) {
     if (num > 1) {
@@ -48,6 +49,9 @@ int main() {
 			// calculate crc
 			generator <<= 24;
 			counter = 0;
+			
+			clock_t begin = clock();
+			
 			while (counter < 25) {
 				// shift 25 times
 
@@ -59,6 +63,10 @@ int main() {
 				counter++;
 				message <<= 1;
 			}
+			
+			clock_t end = clock();
+			
+			printf("\n computation time: %f", (double)(end - begin) / CLOCKS_PER_SEC);
 			
 			// output result
 			printf("\nCRC Result: ");

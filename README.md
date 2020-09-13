@@ -206,8 +206,10 @@ but result should be displayed on terminal when calculation is finished
 		* not working as IORD(CRC_BASE_ADDR, 1) also reads the message instead of the generator, but why ?
 			* updated "crc_avalon_interface.vhd" to change address bit on read, too
 			* adopted length of output of crc to 32 bit
-			* BUT: faulty behaviour is still occuring -> probably some error in the vhdl files
-	* interrupt signal has to be defined in qsys
+			* BUT: faulty behaviour is still occuring -> probably some error in the vhdl files  
+			(error could not be found)
+	* interrupt signal has to be defined in qsys  
+	(not done due to time-consuming search for error in polling)
 
 ## Chapter 13
 Compare Software-CRC (Chapter11) with Hardware-CRC (Chapter8)
